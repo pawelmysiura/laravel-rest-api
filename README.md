@@ -3,29 +3,42 @@
 Simple Api in Laravel 8
 ## Installation
 
-Requirements
+### Requirements
 
 - php 8
+- composer
 - mysql
 - docker
 
 ### Run application
 
+
+
 In root directory run:
 ```
-alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+$ composer require laravel/sail --dev
 
-sail up
+$ php artisan sail:install
+
+$ alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+
+$ sail up
+```
+
+Generate application key:
+
+```
+$ sail php artisan key:generate
 ```
 
 To run test:
 ```
-sail php artisan test
+$ sail php artisan test
 ```
 
 Run migration and seeds
 ```
-sail php artisan migrate:fresh --seed
+$ sail php artisan migrate:fresh --seed
 ```
 
 ## Api getting with Curl

@@ -63,7 +63,7 @@ Create blood
 curl -H 'content-type: application/json' -H 'Accept: application/json' -v -X POST -d '{"title":"Glukoza", "code": "10", "codeICD": "L43", "categories_id": {1, 2}}' http://127.0.0.1/api/bloods
 ```
 
-Update blood of id 4
+Update blood of id 3
 
 ```
 curl -H 'content-type: application/json' -H 'Accept: application/json' -v -X PUT -d '{"title":"Insulina", "code": "153", "codeICD": "L97"}' http://127.0.0.1/api/bloods/3

@@ -5,17 +5,30 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class CategoryController extends Controller
 {
-
-    public function index()
+    /**
+     * List of category
+     *
+     * @return AnonymousResourceCollection
+     */
+    public function index(): AnonymousResourceCollection
     {
         return CategoryResource::collection(Category::all());
     }
 
-    public function store(CategoryRequest $request)
+    /**
+     * Create new category
+     *
+     * @param CategoryRequest $request
+     * @return CategoryResource
+     * @throws \Exception
+     */
+    public function store(CategoryRequest $request): CategoryResource
     {
         try {
             $category = new Category();
@@ -36,14 +49,30 @@ class CategoryController extends Controller
         }
     }
 
-    public function show($id)
+
+    /**
+     * Get category
+     *
+     * @param int $id Category id
+     *
+     * @return CategoryResource
+     */
+    public function show(int $id): CategoryResource
     {
         $category = Category::findOrFail($id);
 
         return new CategoryResource($category);
     }
 
-    public function update(CategoryRequest $request, $id)
+    /**
+     * Update category
+     *
+     * @param CategoryRequest $request
+     * @param int $id Category id
+     *
+     * @return CategoryResource
+     */
+    public function update(CategoryRequest $request, int $id): CategoryResource
     {
         try {
             $category = Category::find($id);
@@ -67,7 +96,14 @@ class CategoryController extends Controller
         }
     }
 
-    public function destroy($id)
+    /**
+     * Delete category
+     *
+     * @param int $id Category id
+     *
+     * @return JsonResponse
+     */
+    public function destroy(int $id): JsonResponse
     {
         $category = Category::findOrfail($id);
         $category->delete();

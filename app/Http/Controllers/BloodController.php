@@ -6,15 +6,28 @@ use App\Http\Requests\BloodRequest;
 use App\Http\Resources\BloodResource;
 use App\Models\Blood;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class BloodController extends Controller
 {
-    public function index()
+    /**
+     * List of blood
+     *
+     * @return AnonymousResourceCollection
+     */
+    public function index(): AnonymousResourceCollection
     {
         return BloodResource::collection(Blood::all());
     }
 
+    /**
+     * Get resource of blood
+     *
+     * @param int $id Blood id
+     *
+     * @return BloodResource
+     */
     public function show(int $id): BloodResource
     {
         $blood = Blood::findOrFail($id);
@@ -22,6 +35,13 @@ class BloodController extends Controller
         return new BloodResource($blood);
     }
 
+    /**
+     * Create new blood
+     *
+     * @param BloodRequest $request
+     * @return BloodResource
+     * @throws \Exception
+     */
     public function store(BloodRequest $request): BloodResource
     {
         try {
@@ -43,6 +63,14 @@ class BloodController extends Controller
         }
     }
 
+    /**
+     * Update blood resource
+     *
+     * @param BloodRequest $request
+     * @param int $id Blood id
+     *
+     * @return BloodResource
+     */
     public function update(BloodRequest $request, int $id): BloodResource
     {
         try {
@@ -67,6 +95,13 @@ class BloodController extends Controller
         }
     }
 
+    /**
+     * Delete blood resource
+     *
+     * @param int $id Blood id
+     *
+     * @return JsonResponse
+     */
     public function destroy(int $id): JsonResponse
     {
         $book = Blood::findOrfail($id);

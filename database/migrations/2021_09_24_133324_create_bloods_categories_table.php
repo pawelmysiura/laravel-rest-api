@@ -11,7 +11,7 @@ class CreateBloodsCategoriesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('bloods_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -31,7 +31,7 @@ class CreateBloodsCategoriesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('bloods_categories');
     }

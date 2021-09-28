@@ -36,7 +36,7 @@ class BloodRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'title.required' => 'Please fill the title.',

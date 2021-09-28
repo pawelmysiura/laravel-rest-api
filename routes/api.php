@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BloodController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group([], function () {
-    Route::apiResource('bloods', \App\Http\Controllers\BloodController::class);
+    Route::apiResource('bloods', BloodController::class);
 });
 
 Route::group([], function () {
-    Route::apiResource('categories', \App\Http\Controllers\CategoryController::class);
+    Route::apiResource('categories', CategoryController::class);
 });

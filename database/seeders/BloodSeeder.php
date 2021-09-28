@@ -32,12 +32,24 @@ class BloodSeeder extends Seeder
                 'title' => 'PT (INR)',
                 'code' => '6',
                 'codeICD' => 'G21',
+            ],            [
+                'id' => 4,
+                'title' => 'IgE całkowite',
+                'code' => '700',
+                'codeICD' => 'L89',
+            ],            [
+                'id' => 5,
+                'title' => 'IgE sp.  rMal d 1, jabłko',
+                'code' => '3956',
+                'codeICD' => 'L91',
             ],
         ];
 
         $bloodToCategories = [
             1 => [1, 3],
-            3 => [3]
+            3 => [3],
+            4 => [1],
+            5 => [1]
         ];
 
         foreach ($data as $bloodData) {
